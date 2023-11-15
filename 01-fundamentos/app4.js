@@ -18,7 +18,7 @@ setTimeout( () => {
 console.log('Fin de programa');
 
 /*
-  Esto es codigo bloqueante
+  Esto es codigo, este es el orden de ejecucion
   console.log('Inicio de programa');
   console.log('Fin de programa');
   console.log('Segundo Timeout');
