@@ -4,28 +4,23 @@
 // const { getUserByIdArrowFunction } = require('./js-foundation/04-arrows');
 // const {getUUID, getAge} = require('./plugins/index');
 // const { buildMakePerson } = require('./js-foundation/05-factory-fn');
+// const { getPokemonById } = require("./js-foundation/06-promises");
 
-const { getPokemonById } = require("./js-foundation/06-promises");
+const { buildLogger } = require("./plugins");
 
 // console.log(emailTemplate);
 
-// getUserByIdArrowFunction(1, (err,user) => {
-//   if (err) {
-//     throw new Error(`${err}`);
-//   }
-//   getUserByIdArrowFunction(2, (err,user2) => {
-//     if (err) {
-//       throw new Error(`${err}`);
-//     }
-//     console.log({user, user2});
-//   });
-// });
 
 // Patron Adaptador y Factory Functions
 // const makePerson = buildMakePerson({getUUID, getAge});
 // const bryan = makePerson({name: 'Bryan', birthDate:'1999-02-20'});
 // console.log(bryan);
 
-getPokemonById(4)
-  .then(pok => console.log(pok))
-  .catch(error => console.log(error));
+// Promises async await
+// getPokemonById(4)
+//   .then((pokemon) => console.log({pokemon}))
+//   .catch(error => console.log(error));
+
+// Uso de winston el logger
+const logger = buildLogger('app.js');
+logger.log('Test Winston Logger');

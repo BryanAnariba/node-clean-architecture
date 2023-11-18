@@ -1,18 +1,12 @@
+const axios = require('axios');
 const httpClient = {
-
   get: async (url) => {
-    const res = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    return await res.json();
+    const {data} = await axios.get(url);
+    return data;
   },
   post: async (url) => {},
   put: async (url) => {},
   delete: async (url) => {},
-
 }
 
 module.exports = {
