@@ -24,3 +24,4 @@ const { buildLogger } = require("./plugins");
 // Uso de winston el logger
 const logger = buildLogger('app.js');
 logger.log('Test Winston Logger');
+logger.error('Test Error Winston')
