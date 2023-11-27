@@ -16,7 +16,7 @@ const users: User[] = [
 
 
 export function getUserById( id: number, callback: (err?: string, user?:User) => void ) {
-  const user = users.find( function(user){
+  const user = users.find(function(user){
     return user.id === id;  
   });
 

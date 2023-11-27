@@ -11,6 +11,12 @@ npm install -D jest @types/jest ts-jest supertest
 2. Crear archivo de configuración de Jest
 ```
 npx jest --init
+  n
+  y
+  node
+  y
+  v8
+  n
 ```
 
 3. En el archivo **jest.config.js** configurar
@@ -27,4 +33,12 @@ testEnvironment: "jest-environment-node",
 "test": "jest",
 "test:watch": "jest --watch",
 "test:coverage": "jest --coverage",
+```
+
+5. Pegar esto en el tsconfig.json
+```
+{
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts","**/*.test.ts"],
+  "compilerOptions": {
 ```
