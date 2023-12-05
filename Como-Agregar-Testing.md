@@ -11,7 +11,7 @@ npm install -D jest @types/jest ts-jest supertest
 2. Crear archivo de configuración de Jest
 ```
 npx jest --init
-  n
+  y
   y
   node
   y
