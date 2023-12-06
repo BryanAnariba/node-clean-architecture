@@ -13,15 +13,11 @@ export class CreateTable implements ICreateTableUseCase{
   ) {}
 
   execute ({base, limit = 10}: ICreateTableOptions): string {
-    const mensaje: string = `=============================================================\n=================TABLA DE MULTIPLICAR DEL ${base}=================\n=============================================================\n`;
     let outPutData: string = '';
     for ( let i = 1; i <= limit; i ++ ) {
-      if (outPutData.length !== 0) {
-        outPutData += '\n';  
-      }
       outPutData += base + 'x' + i + '=' + (base*i);
+      if (i<limit) outPutData += '\n';  
     }
-    outPutData = mensaje + outPutData
     return outPutData;
   }
 }
