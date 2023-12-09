@@ -4,20 +4,12 @@ Documentación [oficial sobre Jest](https://jestjs.io/docs/getting-started)
 
 
 1. Instalaciones de desarrollo (super test es útil para probar Express)
-```
-npm install -D jest @types/jest ts-jest supertest
-```
+```npm install -D jest @types/jest ts-jest supertest```
 
 2. Crear archivo de configuración de Jest
-```
-npx jest --init
-  y
-  y
-  node
-  y
-  v8
-  n
-```
+```npx jest --init```
+  - Select: y, y, node, y, v8, n
+
 
 3. En el archivo **jest.config.js** configurar
 ```
@@ -37,8 +29,16 @@ testEnvironment: "jest-environment-node",
 
 5. Pegar esto en el tsconfig.json
 ```
-{
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts","**/*.test.ts"],
-  "compilerOptions": {
+  SI SE TIENE UNA CARPETA DE test AL MISMO NIVEL DE src
+  {
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "**/*.spec.ts","**/*.test.ts"],
+    "compilerOptions": {}
+  }
+  O SI EL TEST ESTA AL LADO DE CADA ARCHIVO POR EJEMPLO app.ts y app.test.ts en el mismo src
+  {
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "src/**/*.spec.ts","src/**/*.test.ts"],
+    "compilerOptions": {}
+  }
 ```

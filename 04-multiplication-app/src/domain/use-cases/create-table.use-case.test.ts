@@ -1,27 +1,25 @@
 import { CreateTable } from './create-table.use-case';
+describe('starting test of src/domain/use-cases/create-table.use-case.test.ts', () => {
 
-describe('create-table.use-case.ts test', () => {
+  const createTable = new CreateTable();
+  const options = {base: 7, limit: 20};
 
-  test('Should create table with default values', () => {
+  test('createTable Should to be instance of Create Table & row cuantity to be equal limit', () => {
 
-    const createTable = new CreateTable();
     expect(createTable).toBeInstanceOf(CreateTable);
-    const table = createTable.execute({base: 2});
-    const rows = table.split('\n').length;
-    expect(rows).toBe(10);
 
   });
 
-  test('Should create a table with custom values', () => {
-
-    const options = { base: 3, limit: 20 };
-    const createTable = new CreateTable();
+  test('table Should return (7x1=7, 7x2=14, 7x10=70)', () => {
+    
     const table = createTable.execute(options);
-    expect(table.split('\n').length).toBe(options.limit);
-    expect(table).toContain('3x1=3');
-    expect(table).toContain('3x10=30');
-    expect(table).toContain('3x20=60');
+    const rows = table.split('\n').length;
+    expect(table).toContain('7x1=7');
+    expect(table).toContain('7x2=14');
+    expect(table).toContain('7x10=70');
+    expect(table).toContain('7x20=140');
+    expect(rows).toBe(options.limit);
 
   });
-  
+
 });

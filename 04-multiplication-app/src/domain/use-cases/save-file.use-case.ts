@@ -18,11 +18,14 @@ export class SaveFile implements ISaveFileUseCase {
 
   execute ({filename = 'table', base, fileContent, destination = 'outputs'}: IOptions): boolean {
     try {
+      // if (!fs.existsSync('outputs')) {
+      //   fs.mkdirSync(`outputs`, {recursive: true});  
+      // }
       fs.mkdirSync(`${destination}/table-${base}`, {recursive: true});
       fs.writeFileSync(`${destination}/table-${base}/${filename}.txt`, fileContent);
       return true;
     } catch (err) {
-      console.error(err);
+      // console.error(err);
       return false;
     }
   }

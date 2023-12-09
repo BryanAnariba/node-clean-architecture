@@ -1,5 +1,7 @@
-describe('src/app.ts test', () => {
+describe('starting testing of src/app.ts', () => {
+
   test('Should be true', () => {
     expect(true).toBe(true);
   });
+
 });
