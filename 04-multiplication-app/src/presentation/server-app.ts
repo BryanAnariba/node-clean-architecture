@@ -1,7 +1,7 @@
 import { CreateTable } from "../domain/use-cases/create-table.use-case";
 import { SaveFile } from "../domain/use-cases/save-file.use-case";
 
-interface IRunOptions {
+export interface IRunOptions {
   base: number;
   limit: number;
   show: boolean;
@@ -12,7 +12,7 @@ interface IRunOptions {
 export class ServerApp {
 
   public static run ({base, limit, show, name, destination}: IRunOptions) {
-    // console.log({base, limit, show});
+    console.log(`Node JS Server is runing!`);
 
     const table = new CreateTable().execute({base, limit});
     
@@ -22,7 +22,7 @@ export class ServerApp {
     
     (wasFileCreated) 
       ? console.log('Use Case Save File Success!')
-      : console.log('Use Case Save File Failed!')
+      : console.error('Use Case Save File Failed!')
   }
 
 }

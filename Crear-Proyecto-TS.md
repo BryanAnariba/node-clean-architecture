@@ -1,6 +1,6 @@
 1. Instalar Typescript y tipos de node, como dependencias de desarrollo
 ```npm init -yes```
-```npm i -D typescript @types/node rimraf```
+```npm i -D typescript @types/node ts-node-dev rimraf```
 
 2. Inicializar el archivo de configuracion de Typescript (Se puede configurar al gusto)
 ```npx tsc --init --outDir dist/ --rootDir src```

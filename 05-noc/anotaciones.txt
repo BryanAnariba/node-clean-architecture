@@ -1,0 +1,7 @@
+CONCEPTOS DE ESTA APP:
+  Cron Jobs
+    Se usan para automatizar trabajos o tareas especificas de un sitio web
+    que deben hacerse en determinado momento como:
+    - Envio de correos a determinada hora
+    - Tomar la moneda de cambio del dolar todos los dias
+    - Ejecutar cierto proceso a x hora del dia etc.

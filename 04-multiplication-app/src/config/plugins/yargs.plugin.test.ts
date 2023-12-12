@@ -14,7 +14,7 @@ describe('Testing in yargs.plugin.test.ts', () => {
   test('Should return default values.', async() => {
     const argv = await runCommand(['-b', '5']);
     //console.log(process.argv);
-    console.log(argv);
+    //console.log(argv);
     expect(argv).toEqual(
       expect.objectContaining({
         b: 5,
