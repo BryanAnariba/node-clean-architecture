@@ -15,5 +15,12 @@ export class LogEntity {
     this.level = level;
     this.createdAt = new Date();
   }
+
+  public static fromJson = (jsonData: string): LogEntity => {
+    const {message, level, createdAt} = JSON.parse(jsonData);
+    const log = new LogEntity(message, level);
+    log.createdAt = new Date(createdAt);
+    return log;
+  }
   
 }
