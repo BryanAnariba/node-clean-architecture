@@ -20,7 +20,7 @@ export class FileSystemDataSource implements LogDataSource {
 
     [ this.allLogPaths, this.mediumLogsPath, this.highLogsPath ]
     .forEach(path => {
-      if(!path) {
+      if(!fs.existsSync(path)) {
         fs.writeFileSync(path, '');
       }
     });
@@ -28,6 +28,7 @@ export class FileSystemDataSource implements LogDataSource {
 
   private getLogsFromFile = (path: string): LogEntity[] => {
     const content = fs.readFileSync(path, 'utf-8');
+    if (content === '') return [];
     const logs = content.split('\n').map(log => LogEntity.fromJson(log));
     return logs;
   }
@@ -36,11 +37,13 @@ export class FileSystemDataSource implements LogDataSource {
     const logAsJson = `${JSON.stringify(newlog)}\n`;
     // appendFileSync no lee todo el archivo, solo anexa una linea al final con el contenido
     fs.appendFileSync(this.allLogPaths, logAsJson);
-    if (newlog.level = LogLevelSeverity.LOW) return;
 
-    if (newlog.level = LogLevelSeverity.MEDIUM) {
+    if (newlog.level === LogLevelSeverity.LOW) return;
+
+    if (newlog.level === LogLevelSeverity.MEDIUM) {
       fs.appendFileSync(this.mediumLogsPath, logAsJson);
-    } else {
+    }
+    if (newlog.level === LogLevelSeverity.HIGH) {
       fs.appendFileSync(this.highLogsPath, logAsJson);
     }
   }

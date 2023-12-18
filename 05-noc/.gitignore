@@ -3,6 +3,7 @@
 
 ### Node ###
 # Logs
+mongo
 logs
 *.log
 npm-debug.log*
