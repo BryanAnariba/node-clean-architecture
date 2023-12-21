@@ -36,14 +36,14 @@ export class Server {
 
 
     // Este job guarda en las tres datasources o tres bases de datos, recibe un array de respositorios
-    CronService.createJob('*/5 * * * * *', () => {
-      const url: string = 'https://google.com';
-      new CheckServiceMultiple(
-        () => console.log(url + ' :: is Ok!'),
-        (error) => console.log(error),
-        [fsLogRepository, mongoLogRepository, postgreLogRepository]
-      ).execute(url);
-    });
+    // CronService.createJob('*/5 * * * * *', () => {
+    //   const url: string = 'https://google.com';
+    //   new CheckServiceMultiple(
+    //     () => console.log(url + ' :: is Ok!'),
+    //     (error) => console.log(error),
+    //     [fsLogRepository, mongoLogRepository, postgreLogRepository]
+    //   ).execute(url);
+    // });
 
     // Email
     // Correo Con multiples adjuntos
