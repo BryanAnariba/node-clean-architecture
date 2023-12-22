@@ -3,7 +3,7 @@
 ```npm i -D typescript @types/node ts-node-dev rimraf```
 
 2. Inicializar el archivo de configuracion de Typescript (Se puede configurar al gusto)
-```npx tsc --init --outDir dist/ --rootDir src```
+```npx tsc --init --outDir dist/ --rootDir src/```
 
 3. Opcional: para transpilar el codigo usar
 ```npx tsc | npx tsc --watch```
@@ -24,9 +24,8 @@
 6. Copiar esto en package.json seccion de scripts
 ```
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rimraf ./dist && tsc",
-    "start:dev": "nodemon",
+    "start:dev": "tsnd --respawn --clear src/app.ts",
     "start": "npm run build && node dist/app.js"
   },
 ```
