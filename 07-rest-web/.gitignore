@@ -3,6 +3,7 @@
 
 ### Node ###
 # Logs
+/keys
 /mongo
 /postgres
 /mongo-test

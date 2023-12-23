@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rimraf ./dist && tsc",
     "start:dev": "tsnd --respawn --clear src/app.ts",
-    "start": "npm run build && node dist/app.js"
+    "start": "node dist/app.js"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +19,8 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "dotenv": "^16.3.1",
+    "env-var": "^7.4.1",
     "express": "^4.18.2"
   }
 }
