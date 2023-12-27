@@ -1,18 +1,21 @@
 import { Router } from "express";
 import { TodosController } from "./controller";
+import { TodoDataSourceImpl, TodoRepositoryImpl } from "../../infraestructure";
 
 export class Routes {
   
-  public static routes(): Router {
-    const router: Router = Router();
-    const todosController = new TodosController();
+  static get routes(): Router {
     
-    router
-      .get('', todosController.getTodos)
-      .get('/:todoId', todosController.getTodoById)
-      .post('', todosController.createTodo)
-      .put('/:todoId', todosController.updateTodo)
-      .delete('/:todoId', todosController.deleteTodo);
+    const router: Router = Router();
+    const todoDataSource = new TodoDataSourceImpl();
+    const todosRepository = new TodoRepositoryImpl(todoDataSource);
+    const todosController = new TodosController(todosRepository);
+    
+    router.get('', todosController.getTodos)
+    router.get('/:todoId', todosController.getTodoById)
+    router.post('', todosController.createTodo)
+    router.put('/:todoId', todosController.updateTodo)
+    router.delete('/:todoId', todosController.deleteTodo);
     
     return router;
   }
