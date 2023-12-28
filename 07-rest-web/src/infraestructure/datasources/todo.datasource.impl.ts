@@ -27,9 +27,7 @@ export class TodoDataSourceImpl implements TodoDataSource {
   }
 
   async findById(id: number): Promise<TodoEntity> {
-    const todo = await prisma.todo.findFirst({where: {
-      id: id
-    }});
+    const todo = await prisma.todo.findFirst({where: {id: id}});
     if (!todo) throw new Error('Todo with ' + id + ' not found');
     return TodoEntity.fromJSON(todo);
   }

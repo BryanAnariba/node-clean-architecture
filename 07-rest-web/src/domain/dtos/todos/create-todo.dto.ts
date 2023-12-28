@@ -8,7 +8,7 @@ export class CreateTodoDto {
     const {todoName, completedAt} = props;
     let newCompletedAt = completedAt;
 
-    if (!todoName) return ['Todo Name is required', undefined];
+    if (!todoName || todoName.length === 0) return ['Todo Name is required', undefined];
 
     if (completedAt) {
       newCompletedAt = new Date(completedAt);
