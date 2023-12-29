@@ -32,7 +32,7 @@ export class Server {
     //* SPA
     this.app.get('*', (req, res) => {
       const indexPath = path.join(__dirname + `../../../${this.PUBLIC_PATH}/index.html`);
-      res.send(indexPath);
+      res.sendFile(indexPath);
     });
 
     //* Start Server

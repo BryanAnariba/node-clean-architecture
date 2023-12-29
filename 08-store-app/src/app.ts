@@ -1,4 +1,5 @@
 import { envs } from './config/envs';
+import { MongoConnection } from './data';
 import { Server } from './presentation/Server';
 import { AppRoutes } from './presentation/appRoutes';
 
@@ -12,5 +13,6 @@ async function main () {
     PUBLIC_PATH: envs.PUBLIC_PATH, 
     routes: AppRoutes.routes, 
   });
+  await MongoConnection.connectToDB({dbName: envs.MONGO_DBNAME, connectionUrl: envs.MONGO_URL});
   await server.start();
 }
