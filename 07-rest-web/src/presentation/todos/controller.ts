@@ -1,10 +1,18 @@
 import { Request, Response } from 'express';
 import { CreateTodoDto, UpdateTodoDto } from '../../domain/dtos';
-import { CreateTodo, DeleteTodo, GetTodo, GetTodos, TodoRepository, UpdateTodo } from '../../domain';
+import { CreateTodo, CustomError, DeleteTodo, GetTodo, GetTodos, TodoRepository, UpdateTodo } from '../../domain';
 
 export class TodosController {
+  
+  private handleError = (res: Response, error: unknown) => {
+    if (error instanceof CustomError) {
+      return res.status(error.statusCode).json({error: error.message});
+    }
+    return res.status(500).json({error: `Internal Server Error - ${error}`});
+  }
 
   constructor (private readonly todoRepository: TodoRepository) {}
+
 
   public getTodos = (req: Request, res: Response) => {
     //const { skip = 0, limit = 5 } = req.query;
@@ -13,7 +21,7 @@ export class TodosController {
     .then(todos => {
       return res.status(200).json(todos);
     })
-    .catch((error) => res.status(400).json({error: error.message}));
+    .catch((error) => this.handleError(res, error));
   }
 
   public getTodoById = (req: Request, res: Response) => {
@@ -26,7 +34,7 @@ export class TodosController {
     .then((todo) => {
       return res.status(200).json(todo);
     })
-    .catch((error) => res.status(400).json({error: error.message}));
+    .catch((error) => this.handleError(res, error));
   }
 
   public createTodo = async (req: Request, res: Response) => {
@@ -38,7 +46,7 @@ export class TodosController {
     .then((todo) => {
       return res.status(201).json(todo);
     })
-    .catch((error) => res.status(400).json(error.message));
+    .catch((error) => this.handleError(res, error));
   }
 
   public updateTodo = (req: Request, res: Response) => {
@@ -52,7 +60,7 @@ export class TodosController {
     .then((todo) => {
       return res.status(200).json(todo);
     })
-    .catch((error) => res.status(400).json(error.message));
+    .catch((error) => this.handleError(res, error));
   }
 
   public deleteTodo = (req: Request, res: Response) => {
@@ -62,6 +70,6 @@ export class TodosController {
     .then((todo) => {
       return res.status(200).json(todo);
     })
-    .catch((error) => res.status(400).json(error.message));
+    .catch((error) => this.handleError(res, error));
   }
 }
