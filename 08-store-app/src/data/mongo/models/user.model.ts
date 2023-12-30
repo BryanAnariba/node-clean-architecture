@@ -21,11 +21,18 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: ''
   },
+  emailValidated: {
+    type: Boolean,
+    default: false,
+  },
   role: {
     type: [String],
     enum: ['ADMIN','USER'],
     default: ['USER'],
   }
+}, {
+  timestamps: true,
+  versionKey: false,
 });
 
 export const UserModel = mongoose.model('User', userSchema);
