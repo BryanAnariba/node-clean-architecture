@@ -7,7 +7,7 @@ import { envs } from "../../config";
 export class AuthRoutes {
   public static get routes(): Router {
     const router: Router = Router();
-    const emailService = new EmailService(envs.MAILER_SERVICE, envs.MAILER_EMAIL, envs.MAILER_SECRET_PASSWORD);
+    const emailService = new EmailService(envs.MAILER_SERVICE, envs.MAILER_EMAIL, envs.MAILER_SECRET_PASSWORD, envs.SEND_EMAIL);
     const authService = new AuthService(emailService);
     const authController = new AuthController(authService);
 
